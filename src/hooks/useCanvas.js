@@ -39,18 +39,14 @@ const useCanvas = (templateData, backgroundColor, selectedImage, designPattern, 
     });
 
     // Draw CTA
+    // Draw CTA
     ctx.font = `${templateData.cta.font_size || 30}px Arial`;
-    ctx.fillStyle = templateData.cta.text_color;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = templateData.cta.background_color;
-    ctx.fillRect(
-      templateData.cta.position.x - 24,
-      templateData.cta.position.y - templateData.cta.font_size - 12,
-      ctx.measureText(templateData.cta.text).width + 48,
-      templateData.cta.font_size + 24
-    );
-    ctx.fillText(templateData.cta.text, templateData.cta.position.x, templateData.cta.position.y);
+    ctx.fillStyle = templateData.caption.text_color; // Use caption text color
+    ctx.textAlign = templateData.caption.alignment; // Use caption alignment
+    const ctaLines = getLines(ctx, templateData.cta.text, templateData.cta.max_characters_per_line);
+    ctaLines.forEach((line, index) => {
+    ctx.fillText(line, templateData.cta.position.x, templateData.cta.position.y + (index * templateData.cta.font_size));
+   });
 
   }, [templateData, backgroundColor, selectedImage, designPattern, mask, maskStroke]);
 

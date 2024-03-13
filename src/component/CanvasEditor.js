@@ -13,7 +13,9 @@ const CanvasEditor = () => {
   cta: {
     text: "Shop Now",
     position: { x: 190, y: 320 },
+    max_characters_per_line: 15,
     text_color: "#FFFFFF",
+    font_size: 26,
     background_color: "#FFFFFF"
   },
   image_mask: { x: 56, y: 442, width: 970, height: 600 },
